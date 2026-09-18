@@ -12,7 +12,7 @@
         score *= 2;                  // 3 - answer is 30
         let bonus = score % 7;       // 4 - answer is 2
         score -= bonus;              // 5 - answer is 28
-        let old = score++;           // 6 - answer is 29
+        let old = ++score;           // 6 - answer is 29, when changed from scoree++ to ++score, the new old, next, and final score are: 14, 1, 29, and 30
         let next = ++score;          // 7 - answer is 30
         score /= 3;                  // 8 - answer is 10
         bonus--;                     // 9 - answer is 1
