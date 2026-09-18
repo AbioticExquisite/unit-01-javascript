@@ -6,10 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-
-
     <script>
+        let score = 10;              // 1 - answer is 10
+        score += 5;                  // 2 - answer is 15
+        score *= 2;                  // 3 - answer is 30
+        let bonus = score % 7;       // 4 - answer is 2
+        score -= bonus;              // 5 - answer is 28
+        let old = score++;           // 6 - answer is 29
+        let next = ++score;          // 7 - answer is 30
+        score /= 3;                  // 8 - answer is 10
+        bonus--;                     // 9 - answer is 1
+        score = score + bonus * 4;   // 10 - answer is 14
 
-    </script>
+
+
+        console.log(score, bonus, old, next);
+        
+        // 1. Why is old 28 but score 29 after line 6?
+        // A: old is 28 but score is 29 after line 6 because 
+        // 2. Why doesn’t line 10 give 44?
+        // A: line 10 doesn't give 44 because PEMDAS.
+        // 3. What would score be if line 3 came before line 2?
+        // A: Score would be 25
+        </script>
 </body>
 </html>
