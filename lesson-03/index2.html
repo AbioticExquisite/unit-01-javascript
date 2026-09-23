@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Concession Stand Cleanup - Day 4B
+let priceTag = "$3.25";
+let quantity = "8 sodas";
+let weight   = "2.5 lb bag of ice";
+let coupon   = "SAVE5";
+
+// 0. See the problem first. Predict, then run this line.
+// prediction: 3.25 * 8 = 26
+console.log(priceTag * quantity);
+
+// 1. Turn priceTag into the number 3.25 (careful: the $ is in the way)
+let price = parseFloat(priceTag.slice(1));
+
+// 2. Turn quantity into the number 8
+let qty = parseInt(quantity);
+
+// 3. Multiply them
+let total = (price * qty);
+
+// 4. Print: Order total: $26
+
+console.log("Order total: $" + total);
+
+/* ===== CHALLENGE: Converter Showdown =====
+   Predict every result first, then run it and fill in what actually happened.
+
+   String        parseInt()   parseFloat()   Number()
+   "7.9 lb"      ___7___       ___7.9___     ___NaN___
+   "  42  "      ___42___       ___42___     ___12___
+   "12 sodas"    ___12___       ___12___     __NaN____
+   "SAVE5"       ___NaN___     ___NaN___     ___NaN___
+   ""            ______       ______         ______
+
+   MY RULE: I use parseInt or parseFloat when __________I want to exclude or take just the number.____________
+            I use Number() when __________I need strict validation.____________
+
+   eval("3 * 8") gives ___24___
+   Why I would never run eval() on something a customer typed:
+   1. They can do whatever they want inside the code.
+   2. You can get hacked.
+*/
+    </script>
+</body>
+</html>
