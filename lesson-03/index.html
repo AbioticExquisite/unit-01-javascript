@@ -14,9 +14,9 @@
     let space = clean.indexOf(" ");   // 2. find the space between the names
     let first = clean.slice(0, space);   // 3. cut out the first name
     let last = clean.slice(5, 10);   // 4. cut out the last name
-    first = first.toUpperCase();       // 5. capitalize each one
-    last;
-    console.log();  // 6. print "Last, First"
+    first = first.replace("j" , "J");       // 5. capitalize each one
+    last = last.replace("s" , "S");
+    console.log(last, first);  // 6. print "Last, First"\
     </script>
 </body>
 </html>
