@@ -6,10 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-
-
     <script>
+let points = Number(prompt("Enter your test score."));
+// We need to use Number() so that the browser knows that our input is going to be a number, and not a string.
 
+if (points >= 90) {
+  alert("A")
+} else if (points >= 80){
+  alert("B")
+} else if (points >= 70){
+  alert("C");
+} else if (points >= 60) {
+  alert("D");
+} else {
+  alert("F");
+}
+/*
+  TEST RESULTS - Letter Grade Converter
+  Test score | Expected | Your output
+  -----------|----------|------------
+  90         | A        | A
+  89         | B        | B
+  60         | D        | D
+  59         | F        | F
+  100        | A        | A
+*/
     </script>
 </body>
 </html>
