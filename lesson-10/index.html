@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Loops</title>
 </head>
 <body>
     <script>
-        
+    // Task 1: Sum of 1 to 100
+let total = 0
+for (let i = 1; i <= 100; i++) {
+    total += i;
+}
+console.log("The sum is " + total)
+
+    //Task 2: FizzBuzz
+let value = 0
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0) {
+    console.log(i + " Fizz");
+  } else if (i % 5 === 0) {
+    console.log(i + " Buzz");
+  } else if (i % 3 && i % 5 === 0) {
+    console.log(i + " FizzBuzz");
+  } else (i === 0);
+  console.log(i)
+}
+
     </script>
 </body>
 </html>
