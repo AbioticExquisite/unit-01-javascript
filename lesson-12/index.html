@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let secret = Number(prompt("Enter a number between 1 and 100:"));
+    secret = Math.floor((Math.random()* 100) + 1);
+
+    if (secret > 100 && secret < 0){
+    alert("Please enter from 1 to 100.");
+    secret = prompt("Enter a number between 1 and 100:");
+    }
+    if (secret !== "done"){
+     alert("Please enter from 1 to 100.");
+    secret = prompt("Enter a number between 1 and 100:");
+    }
+    if (secret !== null) {
+    alert("Game ended. Number was " + (secret));
+    } 
+    </script>
+</body>
+</html>
