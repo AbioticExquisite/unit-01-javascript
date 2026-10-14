@@ -7,20 +7,32 @@
 </head>
 <body>
     <script>
-    let secret = Number(prompt("Enter a number between 1 and 100:"));
-    secret = Math.floor((Math.random()* 100) + 1);
+    //let secret = Number(prompt("Enter a number between 1 and 100:"));
+    let input = prompt("Guess a number:");
+    let guess = Number(input);
+    input = Math.floor((Math.random()* 100) + 1);
+    if (isNaN(guess)) { alert ("Numbers only."); }
+    attempts += 1;
 
-    if (secret > 100 && secret < 0){
-    alert("Please enter from 1 to 100.");
-    secret = prompt("Enter a number between 1 and 100:");
-    }
-    if (secret !== "done"){
-     alert("Please enter from 1 to 100.");
-    secret = prompt("Enter a number between 1 and 100:");
-    }
-    if (secret !== null) {
-    alert("Game ended. Number was " + (secret));
-    } 
+    if (guess < secret) {
+  alert("Too low. Try again.");
+} else if
+ (guess > secret) {
+  alert("Too high. Try again.");
+} else {
+  won = true;
+}
+    // if (secret > 100 && secret < 0){
+    // alert("Please enter from 1 to 100.");
+    // secret = prompt("Enter a number between 1 and 100:");
+    // }
+    // if (secret !== "done"){
+    //  alert("Please enter from 1 to 100.");
+    // secret = prompt("Enter a number between 1 and 100:");
+    // }
+    // if (secret !== null) {
+    // alert("Game ended. Number was " + (secret));
+    // } 
     </script>
 </body>
 </html>
