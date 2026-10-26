@@ -124,17 +124,29 @@ function getLetter(average) {
 // Write findHighest(list) and findLowest(list).
 // Each uses a for loop and returns the STUDENT OBJECT, not just the number.
 function findHighest(list) {
-    
+    let highestStudent = list[0];
+    for (let i = 1; i < list.length; i++)
+        if (list[i].getAverage() > highestStudent.getAverage()) {
+            highestStudent = list[i];
+        }
+        return highestStudent;
 }
 
 function findLowest(list) {
-
+    let lowestStudent = list[0];
+    for (let i = 1; i < list.length; i++)
+        if (list[i].getAverage() < lowestStudent.getAverage()) {
+            lowestStudent = list[i];
+        }
+        return lowestStudent;
 }
 
 // STEP 5: Sort
 // Write sortByAverage(list) that sorts from highest to lowest average:
 //     list.sort((a, b) => b.getAverage() - a.getAverage());
-
+function sortByAverage(list) {
+    list.sort((a, b) => b.getAverage() - a.getAverage());
+}
 
 // STEP 6: Print the report
 // Write printReport(list). It logs:
@@ -142,6 +154,19 @@ function findLowest(list) {
 //   - one numbered line per student, with the average formatted by toFixed(1)
 //   - the highest and lowest students
 // Then call sortByAverage(roster); and printReport(roster);
+function printReport(list) {
+    let today = new Date();
+    today = today.toLocaleDateString("en-US");
+    console.log("Report for " + today);
+    for (let i = 0; i < list.length; i++) {
+        console.log((i + 1) + ". " + list[i].name + ": " + list[i].getAverage().toFixed(1));
+    }
+    console.log(findHighest(list).name + " has the highest average of " + findHighest(list).getAverage().toFixed(1));
+    console.log(findLowest(list).name + " has the lowest average of " + findLowest(list).getAverage().toFixed(1));
+}
+
+sortByAverage(roster);
+printReport(roster);
 </script>
 </body>
 </html>
