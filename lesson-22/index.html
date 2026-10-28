@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Art Club</title>
+</head>
+<body>
+  <h1 id="pageTitle">Art Club 2024</h1>
+  <h2>Old News</h2>
+  <h2>Old Events</h2>
+  <p id="intro">Welcome!</p>
+  <ul id="supplies"></ul>
+  <p class="date">TBD</p>
+  <p class="date">TBD</p>
+  <p class="date">TBD</p>
+  <p id="footer"></p>
+
+  <script>
+    // Write your code here, one comment above each task
+// 1. Change the #pageTitle heading to Art Club 2026 with getElementById and textContent.
+document.getElementById("pageTitle").textContent = "Art Club 2026"
+
+// 2. Use getElementsByTagName("h2") to change the first <h2> to Club News and the second to Upcoming Events.
+document.getElementsByTagName("h2")[0].textContent = "Club News"
+document.getElementsByTagName("h2")[1].textContent = "Upcoming Events"
+
+// 3. Use getElementsByClassName("date") and a for loop to change every TBD to Wednesdays at 3:30.
+let date = document.getElementsByClassName("date");
+for (i = 0; i < date.length; i++) {
+    date[i].textContent = "Wednesdays at 3:30"
+}
+  </script>
+</body>
+</html>
