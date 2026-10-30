@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gradebook</title>
+</head>
+<body>
+  <h1>Period 3 Gradebook</h1>
+  <ul id="gradebook"></ul>
+  <h2>Honor Roll</h2>
+  <ul id="honor"></ul>
+
+  <script>
+    let students = [
+      { name: "Maya", average: 94.5 },
+      { name: "Leo", average: 81.4 },
+      { name: "Priya", average: 67.8 },
+      { name: "Sam", average: 88 },
+      { name: "Jordan", average: 72.3 }
+    ];
+
+    // Write your code here, one comment above each task
+// 1. Find the #gradebook list with getElementById and store it in a variable named list.
+let list = document.getElementById("gradebook");
+
+// 2. Use a for loop over students. For each student, create an li that reads the name and the average with toFixed(1), for example Maya: 94.5, and append it to list.
+for (let i = 0; i < students.length; i++) {
+// #4 - Stretch
+    if (students[i].average >= 90) {
+  letterGrade = (" (A)");
+} else if (students[i].average >= 80){
+  letterGrade = (" (B)");
+} else if (students[i].average >= 70){
+  letterGrade = (" (C)");
+} else if (students[i].average >= 60) {
+  letterGrade = (" (D)");
+} else {
+  letterGrade = (" (F)");
+}
+// end of #4 stretch
+
+    let li = document.createElement("li");
+    li.textContent = students[i].name + ": " + students[i].average.toFixed(1) + letterGrade;
+    list.appendChild(li);
+}
+
+// 3. After the loop, create a p that reads Report for 5 students (use students.length, not the number 5) and append it to document.body.
+let para = document.createElement("p");
+para.textContent = "Report for " + [students.length] + " students";
+document.body.appendChild(para);
+
+// Stretch (cont.)
+// 5. Inside the loop, for every student with an average of 90 or higher, create a second, new
+// with just the student's name and append it to the #honor list.
+
+// Challenge
+// 6. Before building the list, sort students from highest to lowest average (Day 16 numeric sort, comparing a.average and b.average).
+
+
+// 7. After the loop, append one last li to list that reads Class average: 80.8. Add up the averages inside your loop; don't type the number.
+
+
+// 8. Create an h2 reading All Students and use document.body.insertBefore to put it directly above the #gradebook list
+
+
+  </script>
+</body>
+</html>
