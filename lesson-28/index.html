@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pizza Order</title>
+</head>
+<body>
+  <h1>Pizza Order</h1>
+  <form name="order">
+    <p>Name: <input type="text" id="custName"> <span id="nameError"></span></p>
+    <p>Quantity: <input type="text" id="qty"> <span id="qtyError"></span></p>
+    <p>Promo code: <input type="text" id="promo"> <span id="promoError"></span></p>
+    <p>Phone: <input type="text" id="phone"> <span id="phoneError"></span></p>
+    <button type="button" id="orderBtn">Place order</button>
+  </form>
+  <p id="orderStatus"></p>
+  <script>
+    let custName = document.getElementById("custName");
+    let qty = document.getElementById("qty");
+    let promo = document.getElementById("promo");
+    let phone = document.getElementById("phone");
+
+    // Write your code below
+// 1. Write showError(id, message): it sets the text of the element with that id to message and its color to red.
+function showError(id, message) {
+    let box = document.getElementById(id);
+    box.textContent = message;
+    box.style.color = "red";
+}
+
+// 2. Write checkName(): if the name is blank or only spaces, show Enter your name. in #nameError and return false. Otherwise clear the message ("") and return true.
+function checkName() {
+    if (custName.value.trim() === "") {
+        nameError.textContent = "Enter your name."
+        return false;
+    }
+    else {
+        nameError.textContent = ""
+        return true;
+    }
+}
+
+// 3. Write checkQty(), testing in this order: blank → Enter a quantity.; not a number → Quantity must be a number.; less than 1 or more than 10 → Order 1 to 10 pizzas. Show the message in #qtyError (or clear it) and return true or false.
+function checkQty() {
+    if (qty.value.trim() === "") {
+        qtyError.textContent = "Enter a quantity."
+        return false;
+    }
+    if (isNaN(qty.value)) {
+        qtyError.textContent = "Quantity must be a number."
+        return false;
+    }
+    if (qty.value < 1 || qty.value > 10) {
+        qtyError.textContent = "Order 1 to 10 pizzas."
+        return false;
+    }
+    qtyError.textContent = ""
+    return true;
+}
+
+// 4. Write checkPromo(): the promo code may be blank, or PIZZA5 typed in any case with any spaces around it. Anything else shows Code not found. in #promoError. Return true or false.
+function checkPromo() {
+    let CODE = PIZZA5;
+    let promoCode = Pizza5
+
+    if (promo === "" || promo === "PIZZA5") {
+        promoError.textContent = "";
+        return true;
+    }
+ if (promo !== "PIZZA5") {
+    
+ }
+}
+
+// 5. Attach checkName, checkQty and checkPromo to the "blur" event of their boxes with addEventListener.
+custName.addEventListener("blur", checkName);
+qty.addEventListener("blur", checkQty);
+promo.addEventListener("blur", checkPromo);
+
+// 6. Write placeOrder() and attach it to the Place order button's "click" event. Call every check and store each result first, then: all pass → Order placed for + the trimmed name + ! in green; otherwise → Fix the red messages above. in red.
+function placeOrder() {
+
+}
+
+  </script>
+</body>
+</html>
