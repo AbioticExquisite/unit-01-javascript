@@ -30,11 +30,11 @@ function showError(id, message) {
 // 2. Write checkName(): if the name is blank or only spaces, show Enter your name. in #nameError and return false. Otherwise clear the message ("") and return true.
 function checkName() {
     if (custName.value.trim() === "") {
-        nameError.textContent = "Enter your name."
+        showError("nameError", "Enter your name.")
         return false;
     }
     else {
-        nameError.textContent = ""
+        showError("nameError", "")
         return true;
     }
 }
@@ -42,33 +42,35 @@ function checkName() {
 // 3. Write checkQty(), testing in this order: blank → Enter a quantity.; not a number → Quantity must be a number.; less than 1 or more than 10 → Order 1 to 10 pizzas. Show the message in #qtyError (or clear it) and return true or false.
 function checkQty() {
     if (qty.value.trim() === "") {
-        qtyError.textContent = "Enter a quantity."
+        showError("qtyError", "Enter a quantity.");
         return false;
     }
     if (isNaN(qty.value)) {
-        qtyError.textContent = "Quantity must be a number."
+        showError("qtyError", "Quantity must be a number.");
         return false;
     }
     if (qty.value < 1 || qty.value > 10) {
-        qtyError.textContent = "Order 1 to 10 pizzas."
+        showError("qtyError", "Order 1 to 10 pizzas.");
         return false;
     }
-    qtyError.textContent = ""
+    showError("qtyError", "")
     return true;
 }
 
 // 4. Write checkPromo(): the promo code may be blank, or PIZZA5 typed in any case with any spaces around it. Anything else shows Code not found. in #promoError. Return true or false.
-function checkPromo() {
-    let CODE = PIZZA5;
-    let promoCode = Pizza5
+const PROMO = "PIZZA5";
 
-    if (promo === "" || promo === "PIZZA5") {
-        promoError.textContent = "";
-        return true;
+function checkPromo() {
+if (promo.value.trim() === "") {
+    showError("promoError", "Code not found.");
+    return false;
     }
- if (promo !== "PIZZA5") {
-    
- }
+if (promo.value.trim().toLowerCase() === PROMO.toLowerCase()) {
+    showError("promoError", "Enter a valid promo code.");
+  return false;
+}
+showError("promoError", "")
+return true;
 }
 
 // 5. Attach checkName, checkQty and checkPromo to the "blur" event of their boxes with addEventListener.
