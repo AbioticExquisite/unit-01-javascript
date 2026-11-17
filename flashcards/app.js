@@ -18,21 +18,16 @@ function startApp() {
 
 function getDomain(objective) {
     switch (objective.charAt(0)){
-    case 1: 
-        return "Operators, Methods, and Keywords";
-    break;
-    case 2: 
+    case "1": 
+    return "Operators, Methods, and Keywords";
+    case "2": 
     return "Variables, Data Types, and Functions";
-    break;
-    case 3: 
+    case "3": 
     return "Decisions and Loops";
-    break;
-    case 4: 
+    case "4": 
     return "Document Object Model";
-    break;
-    case 5: 
+    case "5": 
     return "5 HTML Forms";
-    break;
     default: 
     return "Unknown domain";
     };
@@ -42,22 +37,20 @@ function Card(question, answer, objective) {
     this.question = question;
     this.answer = answer;
     this.objective = objective;
-    this.describe = function getLabel() {
-        return "Obj " + this.objective + " | " + this.getDomain(objective);
+    this.getLabel = function () {
+        return "Obj " + this.objective + " | " + getDomain(objective);
     };
 }
 
 let deck = [
-    new Card('"5" + 3', "53", "1.1"),
-    new Card("a++", "", "1.1"),
-    new Card("typeof null", "boolean", "2.1"),
-    new Card("typeof NaN", "number", "2.1"),
-    new Card('"5" == 5', "true", "3.1"),
-    new Card('"5" === 5', "false", "3.1"),
-    new Card("NaN === NaN", "true", "3.1"),
-    new Card('parseInt("3.9")', "3", "2.1"),
-    new Card("toFixed type", "string", "2.1"),
-    new Card("Math.round(-2.5)", "-2", "2.4"),
-]
-
-console.log(getDomain("4.2"))
+    new Card('"5" + 3', "53 -- a string plus a number with join the two together", "1.1"),
+    new Card("a++", "postfix -- adding one to a after it's used", "1.1"),
+    new Card("typeof null", "object -- null always returns as an object", "2.1"),
+    new Card("typeof NaN", "number -- NaN is used for numbers", "2.1"),
+    new Card('"5" == 5', "true -- double equal looks past the string and sees the values (5)", "3.1"),
+    new Card('"5" === 5', "false -- triple equal is more strict so it differentiates the string and number", "3.1"),
+    new Card("NaN === NaN", "true -- NaN is equal to itself", "3.1"),
+    new Card('parseInt("3.9")', "3 -- parseInt only takes the integer", "2.1"),
+    new Card("toFixed type", "string -- toFixed always returns a string", "2.1"),
+    new Card("Math.round(-2.5)", "-2 -- rounding a negative moves it up or to the left of the number line", "2.4"),
+];
