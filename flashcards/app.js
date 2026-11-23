@@ -3,9 +3,9 @@ const EXAM_DATE = new Date(2026, 10, 25);
 
 
 function checkScreen() {
-   if (window.innerWidth < 600) {
-    document.getElementById("screenMsg").textContent = "Small screen: turn your device sideways for a bigger card.";
-} 
+    if (window.innerWidth < 600) {
+        document.getElementById("screenMsg").textContent = "Small screen: turn your device sideways for a bigger card.";
+    }
     else {
         document.getElementById("screenMsg").textContent = "Window width: " + (window.innerWidth) + "px"
     }
@@ -14,22 +14,30 @@ function checkScreen() {
 
 function startApp() {
     checkScreen();
+    // checkpoint 3
+    document.getElementById("nextBtn").addEventListener("click", nextCard);
+    document.getElementById("card").addEventListener("mouseover", highlightCard);
+    document.getElementById("card").addEventListener("mouseout", unhighlightCard);
+    document.addEventListener("keydown", checkKey);
+
+    showCard(current);
+
 }
 
 function getDomain(objective) {
-    switch (objective.charAt(0)){
-    case "1": 
-    return "Operators, Methods, and Keywords";
-    case "2": 
-    return "Variables, Data Types, and Functions";
-    case "3": 
-    return "Decisions and Loops";
-    case "4": 
-    return "Document Object Model";
-    case "5": 
-    return "5 HTML Forms";
-    default: 
-    return "Unknown domain";
+    switch (objective.charAt(0)) {
+        case "1":
+            return "Operators, Methods, and Keywords";
+        case "2":
+            return "Variables, Data Types, and Functions";
+        case "3":
+            return "Decisions and Loops";
+        case "4":
+            return "Document Object Model";
+        case "5":
+            return "5 HTML Forms";
+        default:
+            return "Unknown domain";
     };
 }
 
@@ -54,3 +62,46 @@ let deck = [
     new Card("toFixed type", "string -- toFixed always returns a string", "2.1"),
     new Card("Math.round(-2.5)", "-2 -- rounding a negative moves it up or to the left of the number line", "2.4"),
 ];
+
+// Checkpoint 3
+let current = 0
+
+function showCard(index) {
+    document.getElementById("cardLabel").textContent = deck[index].getLabel();
+    document.getElementById("cardQuestion").textContent = deck[index].question
+    document.getElementById("cardAnswer").textContent = deck[index].answer
+    document.getElementById("cardAnswer").style.display = "none"
+    document.getElementById("cardNumber").textContent = "Card " + (index + 1) + " of " + deck.length;
+}
+
+function flipCard() {
+    if (document.getElementById("cardAnswer").style.display === "none") {
+        document.getElementById("cardAnswer").style.display = "block";
+    } else {
+        document.getElementById("cardAnswer").style.display = "none";
+    }
+}
+
+function nextCard() {
+    current++
+    if (current % deck.length === 0) {
+        current = 0;
+    }
+    showCard(current);
+}
+
+function highlightCard() {
+    let card = document.getElementById("card");
+    card.className = "card highlight";
+}
+
+function unhighlightCard() {
+    let card = document.getElementById("card")
+    card.className = "card"
+}
+
+function checkKey(event) {
+    if (event.key === "ArrowRight") {
+        nextCard();
+    }
+}
