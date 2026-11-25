@@ -22,6 +22,13 @@ function startApp() {
 
     showCard(current);
 
+    // checkpoint 4
+    showCountdown();
+    updateScore();
+    document.getElementById("shuffleBtn").addEventListener("click", shuffleCard);
+    document.getElementById("gotBtn").addEventListener("click", markGot);
+    document.getElementById("missBtn").addEventListener("click", markMissed);
+    document.getElementById("resetBtn").addEventListener("click", resetScore);
 }
 
 function getDomain(objective) {
@@ -103,5 +110,63 @@ function unhighlightCard() {
 function checkKey(event) {
     if (event.key === "ArrowRight") {
         nextCard();
+    }
+}
+
+// checkpoint 4
+let gotIt = 0;
+let missed = 0;
+
+function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function shuffleCard() {
+    current = getRandom(0, deck.length - 1);
+   showCard(current);
+}
+function updateScore() {
+    if (document.getElementById("scoreMsg").textContent === "") {
+        document.getElementById("scoreMsg").textContent = "No cards scored yet."
+    } else {
+    document.getElementById("scoreMsg").textContent = gotIt + " of " + (gotIt + missed) + " correct (" + Math.round((gotIt / (gotIt + missed)) * 100) + " %) "
+}
+if (Math.round((gotIt / (gotIt + missed)) * 100).toFixed(1) >= 90) {
+    document.getElementById("scoreMsg").textContent += "Exam ready!"
+} else if (Math.round((gotIt / (gotIt + missed)) * 100).toFixed(1) >= 80) {
+    document.getElementById("scoreMsg").textContent += "Almost there. Keep flipping."
+} else if (Math.round((gotIt / (gotIt + missed)) * 100).toFixed(1) >= 70) {
+    document.getElementById("scoreMsg").textContent += "Flip your missed cards again."
+}
+}
+
+function markGot() {
+    gotIt += 1
+    current++
+    updateScore()
+}
+
+function markMissed() {
+    missed += 1
+    current++
+    updateScore()
+}
+
+function resetScore() {
+    let reset = confirm("Reset your score to 0?")
+    if (reset === true) {
+        gotIt = 0
+        missed = 0
+        document.getElementById("scoreMsg").textContent = ""
+        updateScore()
+    }
+}
+
+function showCountdown() {
+    let date = new Date()
+    document.getElementById("countdown").textContent = Math.ceil((EXAM_DATE - date) / (1000 * 60 * 60 * 24)) + " day until exam day." +
+    EXAM_DATE.toLocaleDateString("en-US")
+    if (date >= EXAM_DATE) {
+        document.getElementById("countdown").textContent = "Exam day is here " + EXAM_DATE.toLocaleString("en-US") + ", You've got this! "
     }
 }
