@@ -29,6 +29,10 @@ function startApp() {
     document.getElementById("gotBtn").addEventListener("click", markGot);
     document.getElementById("missBtn").addEventListener("click", markMissed);
     document.getElementById("resetBtn").addEventListener("click", resetScore);
+
+    // checkpoint 5
+    renderList();
+    document.getElementById("searchBox").addEventListener("keyup", searchDeck)
 }
 
 function getDomain(objective) {
@@ -169,4 +173,27 @@ function showCountdown() {
     if (date >= EXAM_DATE) {
         document.getElementById("countdown").textContent = "Exam day is here " + EXAM_DATE.toLocaleString("en-US") + ", You've got this! "
     }
+}
+
+// checkpoint 5
+function renderList() {
+document.getElementById("cardList").innerHTML = "";
+for (let i = 0; i < deck.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = deck[i].question + " [" + deck[i].answer + "]";
+    document.getElementById("cardList").appendChild(li);
+}
+document.getElementById("cardCount").textContent = deck.length;
+}
+
+function searchDeck() {
+let list = document.getElementById("searchBox").ariaValueMax.toLowerCase();
+let lists = document.getElementsByTagName("li");
+
+for (let i = 0; i < list.length; i++){
+    if (list.trim() === "") {
+        lists[i].classList = "";
+        document.getElementById("searchMsg").textContent = ""
+    }
+}
 }
